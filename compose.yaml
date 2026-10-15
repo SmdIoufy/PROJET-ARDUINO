@@ -1,13 +1,12 @@
-```yaml
 services:
   db:
     image: mysql:8.4
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: maison
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Définis MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set_MYSQL_ROOT_PASSWORD}
       MYSQL_USER: maison_app
-      MYSQL_PASSWORD: ${DB_PASSWORD:?Définis DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set_DB_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
       - ./maison-serveur/shema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
@@ -29,7 +28,7 @@ services:
       PORT: 3000
       DB_HOST: db
       DB_USER: maison_app
-      DB_PASSWORD: ${DB_PASSWORD:?Définis DB_PASSWORD}
+      DB_PASSWORD: ${DB_PASSWORD:?Set_DB_PASSWORD}
       DB_NAME: maison
     ports:
       - "3000:3000"
@@ -44,4 +43,3 @@ volumes:
 
 networks:
   maison-net:
-```
