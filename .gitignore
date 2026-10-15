@@ -1,0 +1,15 @@
+# Secrets et configuration locale
+.env
+.env.*
+!.env.example
+maison-serveur/.env
+maison-interface/.env
+
+# Dépendances et fichiers générés
+node_modules/
+dist/
+maison-serveur/public/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
